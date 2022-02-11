@@ -1,0 +1,43 @@
+import java.lang.ref.Cleaner;
+import java.util.Random;
+public class CLEANER {
+    
+
+    private int goalDistance;
+    private int maxHops;
+
+public CLEANER(int goalDistance, int maxHops) {
+        this.goalDistance = goalDistance;
+        this.maxHops = maxHops;
+    }
+
+    private int hopDistance(){
+        Random ran = new Random();
+
+        // generating integer
+        int randint = ran.nextInt(30-10) + 10;
+        return randint;
+    }
+
+public boolean simulate(){
+    int totaldistance = 0;
+    for(int i = 0; i < maxHops; i++){
+        totaldistance += hopDistance();
+        if(totaldistance >= goalDistance){ //must be negative or postive goal
+            return true;}
+    }
+    return false;
+}
+
+public double runSimulations(int num){
+    double totaltrue = 0;
+    for(int i = 0; i < num; i++){
+        if( simulate() == true){
+            totaltrue++;
+        }
+    } 
+    return totaltrue / num; //simulation over total
+}
+}
+    
+
