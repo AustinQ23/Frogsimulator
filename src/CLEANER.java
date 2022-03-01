@@ -22,6 +22,7 @@ public boolean simulate(){
     int totaldistance = 0;
     for(int i = 0; i < maxHops; i++){
         totaldistance += hopDistance();
+        if( totaldistance < 0){return false;}
         if(totaldistance >= goalDistance){ //must be negative or postive goal
             return true;}
     }
